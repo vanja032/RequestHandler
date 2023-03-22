@@ -23,6 +23,14 @@ app.use(cors({
     origin: "*"
 }));
 
-app.use("/rates", routes);
+app.use("/rates", routes.router);
 
-module.exports = app;
+
+module.exports = {
+    app: app,
+    shared: sh
+};
+
+function sh(ww){
+    routes.shared(ww);
+}
